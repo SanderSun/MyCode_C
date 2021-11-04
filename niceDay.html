@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 520px;
+            height: 520px;
+            margin: 50px auto 0px;
+            background-color: pink;
+            font-size: 52px;
+            color: skyblue;
+            text-align: center;
+            line-height: 520px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>美好的一天</p>
+    </div>
+    <script>
+        var div = document.querySelector('div');
+        var p = document.querySelector('p');
+        div.addEventListener('mouseenter', function() {
+            p.style.color = 'red';
+            p.innerHTML = '从敲一行代码开始~~';
+        })
+    </script>
+</body>
+</html>
