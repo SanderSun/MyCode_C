@@ -1,6 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include <stdio.h>
-
+#include <stdlib.h>
+#include <string.h>
 //void test(int arr[])
 //{
 //	int sz = sizeof(arr) / sizeof(arr[0]);
@@ -435,14 +436,202 @@ pfun_t signal(int, pfun_t);
 //	} while (input);
 //}
 
+//int main()
+//{
+//	int arr[10] = { 0 };
+//	int(*p)[10] = &arr;//取出数组的地址
+//
+//	int(*pfArr[4])(int, int);//pfArr是一个数组-函数指针的数组
+//	int(*(*ppfArr)[4])(int, int) = &pfArr;
+//	//ppfArr是一个数组指针，指针指向的数组有4个元素
+//	//指向的数组的每个元素的类型是一个函数指针int(*)(int,int)
+//	return 0;
+//}
+//void print1(char* str)
+//{
+//	printf("hehe:%s\n", str);
+//}
+//
+//void print2(char* str)
+//{
+//	printf("haha:%s\n", str);
+//}
+//
+//void test(void(*p)(char*))
+//{
+//	printf("test\n");
+//	p("bit");
+//}
+//
+//int main()
+//{
+//	//回调函数
+//	test(print2);
+//
+//	return 0;
+//}
+//int Add(int x, int y);
+//
+//int main()
+//{
+//	//指针数组
+//	int* arr[10];
+//	//数组指针
+//	int*(*pa)[10] = &arr;
+//	//函数指针
+//	int(*pAdd)(int, int) = Add;
+//	//函数指针的数组
+//	int(*pArr[5])(int, int);
+//	//指向函数指针数组的指针
+//	int(*(*ppArr)[5])(int, int) = &pArr;
+//	return 0;
+//}
+
+//void bubble_sort(int arr[], int sz)
+//{
+//	int i = 0;
+//	for (i = 0; i < sz - 1; i++)
+//	{
+//		int j = 0;
+//		for (j = 0; j < sz-1-i; j++)
+//		{
+//			if (arr[j]>arr[j + 1])
+//			{
+//				int tmp = arr[j];
+//				arr[j] = arr[j + 1];
+//				arr[j + 1] = tmp;
+//			}
+//		}
+//	}
+//}
+
+struct Stu
+{
+	char name[20];
+	int age;
+};
+//void qsort(void *base, size_t num, size_t width, int(*cmp)(const void *el, const void *e2));
+
+int cmp_int(const void* e1, const void* e2)
+{
+	return *(int*)e1 - *(int*)e2;
+}
+
+void test1()
+{
+	int arr[10] = { 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 };
+	int sz = sizeof(arr) / sizeof(arr[0]);
+	qsort(arr, sz, sizeof(arr[0]), cmp_int);
+	int i = 0;
+	for (i = 0; i < sz; i++)
+		printf("%d ", arr[i]);
+}
+
+int cmp_float(const void* el, const void* e2)
+{
+	if (*(float*)el == *(float*)e2)
+		return 0;
+	else if (*(float*)el > *(float*)e2)
+		return 1;
+	else
+		return -1;
+}
+
+void test2()
+{
+	float f[] = { 9.0, 8.0, 7.0, 6.0, 5.0, 4.0 };
+	int sz = sizeof(f) / sizeof(f[0]);
+	qsort(f, sz, sizeof(f[0]), cmp_float);
+	int i = 0;
+	for (i = 0; i < sz; i++)
+		printf("%f ", f[i]);
+}
+
+int cmp_stu_by_age(const void* e1, const void* e2)
+{
+	return ((struct Stu*)e1)->age - ((struct Stu*)e2)->age;
+}
+
+int cmp_stu_by_name(const void* e1, const void* e2)
+{
+	//比较名字就是比较字符串
+	//字符串比较不能直接用<>=来比较，应该用strcmp函数
+	return strcmp(((struct Stu*)e1)->name ,((struct Stu*)e2)->name);
+}
+
+
+void test3()
+{
+	struct Stu s[3] = { { "张三", 20 }, { "李四", 30 }, { "王五", 35 } };
+	int sz = sizeof(s) / sizeof(s[0]);
+	qsort(s, sz, sizeof(s[0]), cmp_stu_by_age);
+	qsort(s, sz, sizeof(s[0]), cmp_stu_by_name);
+}
+
+void Swap(char* buf1, char* buf2, int width) //一个字节一个字节交换，交换四次，相当于交换一个int类型
+{
+	int i = 0;
+	for (i = 0; i < width; i++)
+	{
+		char tmp = *buf1;
+		*buf1 = *buf2;
+		*buf2 = tmp;
+		buf1++;
+		buf2++;
+	}
+}
+
+void bubble_sort(void* base, int sz, int width,int(*cmp)(void* e1, void* e2))
+{
+	int i = 0;
+	for (i = 0; i < sz - 1; i++)
+	{
+		int j = 0;
+		for (j = 0; j < sz - 1 - i;j++)
+		{
+			//两个元素的比较
+			if (cmp((char*)base + j*width, (char*)base + (j + 1)*width)>0)
+			{
+				//交换
+				Swap((char*)base + j*width, (char*)base + (j + 1)*width,width);
+			}
+		}
+	}
+}
+
+void test4()
+{
+	int arr[10] = { 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 };
+	int sz = sizeof(arr) / sizeof(arr[0]);
+	bubble_sort(arr,sz,sizeof(arr[0]),cmp_int);
+}
+
+void test5()
+{
+	struct Stu s[3] = { { "张三", 20 }, { "李四", 30 }, { "王五", 35 } };
+	int sz = sizeof(s) / sizeof(s[0]);
+	bubble_sort(s,sz,sizeof(s[0]),cmp_stu_by_age);
+}
+
+
 int main()
 {
-	int arr[10] = { 0 };
-	int(*p)[10] = &arr;//取出数组的地址
-
-	int(*pfArr[4])(int, int);//pfArr是一个数组-函数指针的数组
-	int(*(*ppfArr)[4])(int, int) = &pfArr;
-	//ppfArr是一个数组指针，指针指向的数组有4个元素
-	//指向的数组的每个元素的类型是一个函数指针int(*)(int,int)
+	//test1();
+	//test2();
+	//test3();
+	test4();
+	test5();
 	return 0;
 }
+
+
+//int main()
+//{
+//	int a = 10;
+//	int* pa = &a;
+//	//char* pc = &a;
+//	void* p = &a;
+//	char ch = 'w';
+//	p = &ch;
+//	return 0;
+//}
