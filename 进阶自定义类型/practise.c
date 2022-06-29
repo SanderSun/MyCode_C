@@ -137,16 +137,19 @@ struct
 //	int d : 30;//d占30个比特位
 //};
 
-struct S
+//struct S
+//{
+//	char a : 3;
+//	char b : 4;
+//	char c : 5;
+//	char d : 4;
+//};
+
+union Un
 {
-	char a : 3;
-	char b : 4;
-	char c : 5;
-	char d : 4;
+	int a; //4
+	char arr[5];//1
 };
-
-
-
 
 int main()
 {
@@ -171,11 +174,14 @@ int main()
 	/*struct S s;
 	printf("%d\n", sizeof(s));*/ //8
 
-	struct S s = { 0 };
+	/*struct S s = { 0 };
 	s.a = 10;
 	s.b = 20;
 	s.c = 3;
-	s.d = 4;
+	s.d = 4;*/
+
+	union Un u;
+	printf("%d\n", sizeof(u));
 
 	return 0;
 }

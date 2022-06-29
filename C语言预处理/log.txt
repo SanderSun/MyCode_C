@@ -1,0 +1,10 @@
+file:d:\文档\visual studio 2013\projects\c语言预处理\practise.c line:36 date:Jun 29 2022 time:22:47:47 i=0
+file:d:\文档\visual studio 2013\projects\c语言预处理\practise.c line:36 date:Jun 29 2022 time:22:47:47 i=1
+file:d:\文档\visual studio 2013\projects\c语言预处理\practise.c line:36 date:Jun 29 2022 time:22:47:47 i=2
+file:d:\文档\visual studio 2013\projects\c语言预处理\practise.c line:36 date:Jun 29 2022 time:22:47:47 i=3
+file:d:\文档\visual studio 2013\projects\c语言预处理\practise.c line:36 date:Jun 29 2022 time:22:47:47 i=4
+file:d:\文档\visual studio 2013\projects\c语言预处理\practise.c line:36 date:Jun 29 2022 time:22:47:47 i=5
+file:d:\文档\visual studio 2013\projects\c语言预处理\practise.c line:36 date:Jun 29 2022 time:22:47:47 i=6
+file:d:\文档\visual studio 2013\projects\c语言预处理\practise.c line:36 date:Jun 29 2022 time:22:47:47 i=7
+file:d:\文档\visual studio 2013\projects\c语言预处理\practise.c line:36 date:Jun 29 2022 time:22:47:47 i=8
+file:d:\文档\visual studio 2013\projects\c语言预处理\practise.c line:36 date:Jun 29 2022 time:22:47:47 i=9
