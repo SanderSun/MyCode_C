@@ -11,8 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{83E8BB16-55C3-4C92-A95F-F7EA1EEDBBEA}</ProjectGuid>
-    <RootNamespace>C语言预处理</RootNamespace>
+    <ProjectGuid>{DF270CCD-8AA0-4085-A933-637037619CF2}</ProjectGuid>
+    <RootNamespace>宏计算结构体中某变量相对首地址的偏移</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -65,11 +65,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="add.c" />
     <ClCompile Include="practise.c" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="add.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

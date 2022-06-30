@@ -1,8 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include <stdio.h>
-
-extern int add(int x, int y);
-
+#include "add.h"
 //int main()
 //{
 //	/*int arr[10] = { 0 };
@@ -40,5 +38,56 @@ extern int add(int x, int y);
 //	return 0;
 //}
 
-#define MAX 100
-#define STR "abc"
+//#define MAX 100
+//#define STR "abc"
+//#define SU_DO for(;;)
+
+//#define PRINT(X) printf("the value of "#X" is %d\n",X)
+//
+//int main()
+//{
+//	int a = 10;
+//	int b = 20;
+//	PRINT(a);
+//	//printf("the value of ""a"" is %d\n",a);
+//	PRINT(b);
+//	//printf("the value of ""b"" is %d\n",a);
+//	return 0;
+//}
+
+//#define CAT(X,Y) X##Y
+//int main()
+//{
+//	int Class17 = 2019;
+//	printf("%d\n", CAT(Class, 17));
+//	return 0;
+//}
+
+#define MAX(X,Y) ((X)>(Y)?(X):(Y))
+#define __DEBUG__
+int main()
+{
+	int a = 10;
+	int b = 11;
+//#undef MAX 
+	int max = MAX(a++, b++);
+	//int max = ((a++)>(b++)?(a++):(b++)) 
+#ifdef __DEBUG__
+	printf("%d\n",max);
+	printf("%d\n", a);
+	printf("%d\n", b);
+#endif
+
+#if a>b
+	printf("%d\n", max);
+#elif a<b
+	printf("%d\n", a);
+#else
+	printf("%d\n", b);
+#endif
+
+	return 0;
+}
+
+
+
